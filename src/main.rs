@@ -16,7 +16,7 @@ fn main() {
     dbg!("{}", &pool);
     dbg!(HOST);
     // Iterator over connections received
-    for stream in listener.incoming().take(2) {
+    for stream in listener.incoming() {
         let stream = stream.unwrap(); // unwrap the stream to get the TCP stream
         pool.execute(|| {
             handle_connection(stream);
